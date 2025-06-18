@@ -6,3 +6,6 @@ agent.latest.log
 .vscode/
 .DS_Store
 Thumbs.db
+summarizer_agent/.env
+quiz_agent/.env
+
