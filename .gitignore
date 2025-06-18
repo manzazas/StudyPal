@@ -1,0 +1,8 @@
+﻿.venv/
+__pycache__/
+*.py[cod]
+*.class
+agent.latest.log
+.vscode/
+.DS_Store
+Thumbs.db
