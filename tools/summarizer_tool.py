@@ -9,5 +9,8 @@ def get_summary(notes :str) -> str:
 
     """
 
-    print (f"---Tool: get_summary called for notes") #Log tool execution
+    print (f"---Tool: get_summary called for notes of length = {len(notes)}") #Log tool execution
+    
+    #TODO: Replace this with actual LLM-driven summarization
+    
     return notes
