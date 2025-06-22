@@ -8,4 +8,7 @@ agent.latest.log
 Thumbs.db
 summarizer_agent/.env
 quiz_agent/.env
+planner_agent/.env
+flashcard_agent/.env
+
 
