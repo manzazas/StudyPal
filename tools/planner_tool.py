@@ -28,13 +28,15 @@ def generate_plan(exam_schedule: dict ) -> list:
     subject_colors = {} #Key: subject, Value: color
 
     for subject, [days_left, topics] in exam_schedule.items():
-        subject_colors[subject] = generate_random_rgb()
+        subject_colors[subject] = generate_random_rgb() ##assign each subject a color to be implemented later
         for i in range(0,days_left-1):
             study_date= (date.today() + timedelta(days = i)).isoformat()
             task = {
                 "subject": subject,
                 "color": subject_colors[subject],
-                "study_duration": "",
+                "study_duration":random.choice([
+                    "30 minutes", "45 minutes", "1 hour", "1.5 hours", "2 hours"
+                ]),  
                 "study_details": topics,
 
             }

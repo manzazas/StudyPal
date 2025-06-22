@@ -14,16 +14,17 @@ def parse_exam(exams_info: str) -> dict:
     
    
     exam_schedule = {}
-    pattern = r"(\w+)\s+exam\s+is\s+in\s+(\d+)\s+days\s+and\s+covers\s+(.+?)" #this pattern finds the subject word, time left, and topics covered
-    matches = re.findall(pattern,exams_info)
+    pattern = r"([A-Za-z ]+?) exam is in (\d+) days(?: and covers ([^\.]+))?" #this pattern finds the subject word, time left, and topics covered
+    matches = re.findall(pattern, exams_info, flags=re.IGNORECASE)
+
 
     for subject, date_until, topics in matches:
 
         subject = subject.capitalize()
         date_until = int(date_until)
-        topics = topics.strip()
+        topics = topics.strip() if topics else " "
 
-        exam_schedule[subject] = [date_until,topics]
+        exam_schedule[subject] = (date_until,topics)
     
 
     return exam_schedule #RETURNS dict
