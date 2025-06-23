@@ -14,10 +14,12 @@ def create_flashcards(text: str, num_of_cards: int) -> list[dict]:
             "question": "answer"
             }
     """
+    sample_flashcards = []
+    for i in range(num_of_cards):
+        sample_flashcards.append({
+            f"Sample Q{i+1}?": f"Sample Answer {i+1}"
+        })
 
-
-    print (f"---Tool: create_flashcards called for notes of length {len(text)}, num_of_cards: {num_of_cards}")
-
-    return text
+    return sample_flashcards
 
 
