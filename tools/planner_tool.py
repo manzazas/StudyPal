@@ -48,7 +48,7 @@ def generate_plan(exam_schedule: dict ) -> list:
 
     final_plan = []
     for dates in sorted(planByDay):
-        final_plan.append({"day":dates, "tasks:": planByDay[dates] })
+        final_plan.append({"day":dates, "tasks": planByDay[dates] })
     return final_plan
 
             

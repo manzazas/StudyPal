@@ -1,0 +1,34 @@
+import unittest
+from parse_exam_schedule import parse_exam
+
+class TestParseExamSchedule(unittest.TestCase):
+
+    def test_one_exam(self):
+        entry = "My history exam is in 7 days and covers the civil war,reconstruction era, and Lincoln's presidency"
+        expected_output = {
+            "History": (7,"Civil war, Reconstruction era, and Linoln's presidency")
+            }
+        self.assertAlmostEqual(parse_exam(entry), expected_output)
+
+    def test_multiple_exams(self):
+        entry = "My math exam is in 7 days and covers algebra and calculus. My physics exam is in 10 days and covers mechanics and waves."
+        expected_output = {
+            "Math": (7, "algebra,calculus"),
+            "Physics": (10, "mechanics,waves")
+        }
+        self.assertAlmostEqual(parse_exam(entry), expected_output)
+
+    def test_messy_spacing(self):
+        input_str = "  English   exam is in  3 days and covers  poetry and prose "
+        expected = {
+            "English": (3, "poetry and prose")
+        }
+        self.assertEqual(parse_exam(input_str), expected)
+    
+    def test_no_matches(self):
+        input_str = "I have an exam soon but I don't know when."
+        expected = {}
+        self.assertEqual(parse_exam(input_str), expected)
+
+if __name__ == "__main__":
+    unittest.main()
