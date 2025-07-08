@@ -16,6 +16,22 @@ An AI-powered study assistant that helps you **summarize notes, generate quizzes
 ---
 
 ## 🗂️ Project Structure
+StudyPal/
+├── agents/ # Each agent folder contains its own ADK setup
+│ ├── summarizer_agent/
+│ ├── quiz_agent/
+│ ├── flashcard_agent/
+│ ├── planner_agent/
+│ └── studypal_root/ (WOrk in Progress)
+├── tools/ # Reusable logic used by agents
+│ ├── summarizer_tool.py
+│ ├── quiz_tool.py
+│ ├── flashcard_maker_tool.py
+│ ├── parse_exam_schedule.py
+│ └── planner_tool.py
+├── tests/ # Unit tests for individual tools
+├── requirements.txt
+└── README.md
 
 
 ---
