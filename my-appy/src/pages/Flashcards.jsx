@@ -1,37 +1,50 @@
+import React, { useState } from "react";
+import Sidebar from "../components/flash_comp/Sidebar";
+import ScatterView from "../components/flash_comp/ScatterView";
+import SelectionView from "../components/flash_comp/SelectionView";
+
+const dummyGroups = [
+  {
+    name: "Biology",
+    cards: [
+      { question: "What is photosynthesis?", answer: "The process by which plants convert sunlight into energy." },
+      { question: "Cell powerhouse?", answer: "Mitochondria" },
+    ],
+  },
+  {
+    name: "History",
+    cards: [
+      { question: "Who was the first president of the USA?", answer: "George Washington" },
+      { question: "Year of the Declaration of Independence?", answer: "1776" },
+    ],
+  },
+];
+
 function Flashcards() {
+  const [groups, setGroups] = useState(dummyGroups);
+  const [selectedGroup, setSelectedGroup] = useState(groups[0]);
+  const [viewMode, setViewMode] = useState("scatter");
+
   return (
-    <section className="mx-auto max-w-5xl px-6 py-16 space-y-10">
-      <header className="text-center">
-        <h2 className="text-3xl font-bold sm:text-4xl">Flashcard Generator</h2>
-        <p className="mt-2 text-gray-600">Paste your study text and instantly get spaced‑repetition‑ready cards.</p>
-      </header>
+    <div className="flex min-h-screen bg-gray-50">
+      <Sidebar groups={groups} onSelectGroup={setSelectedGroup} />
 
-      <textarea
-        placeholder="Paste notes, textbook chapter, or lecture transcript here…"
-        className="w-full min-h-[12rem] resize-y rounded-xl border border-gray-300 bg-white p-4 shadow-sm focus:border-purple-500 focus:ring-2 focus:ring-purple-200"
-      />
-
-      <div className="text-right">
-        <button className="rounded-full bg-purple-600 px-8 py-3 font-medium text-white shadow-lg transition hover:brightness-110">
-          Generate
-        </button>
-      </div>
-
-      {/* Result placeholder */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="relative group h-48 rounded-2xl bg-gradient-to-br from-purple-600 to-indigo-600 p-1 shadow-lg"
-          >
-            <div className="flex h-full w-full flex-col justify-center rounded-2xl bg-white p-4 text-center transition-transform group-hover:rotate-y-180">
-              <span className="font-semibold">Front</span>
-              {/* Back face would be implemented with CSS flip */}
-            </div>
+      <main className="flex-1 p-6">
+        <div className="mb-4 flex justify-between items-center">
+          <h2 className="text-2xl font-bold">{selectedGroup.name} Flashcards</h2>
+          <div className="space-x-2">
+            <button onClick={() => setViewMode("scatter")} className="px-4 py-2 rounded bg-purple-100">Scatter View</button>
+            <button onClick={() => setViewMode("selection")} className="px-4 py-2 rounded bg-purple-300 text-white">Selection View</button>
           </div>
-        ))}
-      </div>
-    </section>
+        </div>
+
+        {viewMode === "scatter" ? (
+          <ScatterView cards={selectedGroup.cards} />
+        ) : (
+          <SelectionView cards={selectedGroup.cards} />
+        )}
+      </main>
+    </div>
   );
 }
 
