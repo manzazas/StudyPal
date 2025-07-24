@@ -27,7 +27,7 @@ def create_flashcards(text: str, num_of_cards: int) -> List[Dict[str, str]]:
         q = tmpl.format(s[:120])  # trim long sentences
         cards.append({"id": len(cards) + 1,"question": q, "answer": s})
 
-    # If still short, pad with generic Q/A
+   
     while len(cards) < num_of_cards:
         idx = len(cards) + 1
         cards.append({"id": idx,"question": f"Review point {idx} from the text.", "answer": "See original notes."})

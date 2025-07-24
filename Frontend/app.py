@@ -3,7 +3,7 @@ from adk_client import ensure_session, run_turn
 
 st.set_page_config(page_title="StudyPal", layout="wide")
 
-# --- simple state ---
+# simple state management
 if "user_id" not in st.session_state:
     st.session_state.user_id = "demo_user"
 if "session_id" not in st.session_state:
@@ -15,7 +15,7 @@ feature = st.sidebar.selectbox(
     ["Flashcards", "Summarize", "Quiz", "Study Plan"]
 )
 
-# Map feature to your agent folder names
+# Map for agent folder names
 AGENT_MAP = {
     "Flashcards": "flashcard_agent",
     "Summarize": "summarizer_agent",
@@ -42,7 +42,7 @@ if feature == "Flashcards":
         for ev in events:
             parts = ev.get("content", {}).get("parts", [])
             for p in parts:
-                # function_response holds your tool output if the tool returned JSON
+                # Check for function response
                 if "functionResponse" in p:
                     resp = p["functionResponse"]["response"]
                     cards = resp.get("result")
@@ -58,5 +58,5 @@ if feature == "Flashcards":
                     st.write(a)
         else:
             st.info(final_text or "No structured flashcards returned.")
-
-# Repeat similar blocks for Summarize / Quiz / Study Plan using the right prompts
+else:
+    st.info("This feature is under development. Please check back later!")
