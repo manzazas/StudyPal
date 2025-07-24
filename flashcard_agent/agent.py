@@ -7,10 +7,11 @@ root_agent = Agent(
     description='A helpful assistant that generates flashcards to study from',
     instruction=(
         "When given a textbook excerpt or study notes, call 'flashcard_maker_tool'. "
-        "Produce flashcards with the questions and answers. "
+        "Produce flashcards with the questions and answers and a unique identifier for each. "
         "The questions are a variety of fill in the blank, vocabulary, and short-answer questions. "
         "They should be simplified as much as possible, like how a flashcard would be. "
-        "If the tool returns an error, politely inform the user."
+        "The tool already returns a JSON list of flashcards. Do not apologize; just present them."
+
     ),
     tools = [create_flashcards]
 )

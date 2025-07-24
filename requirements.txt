@@ -1,0 +1,20 @@
+google-adk
+praw
+python-dotenv
+litellm
+streamlit>=1.31.0
+requests>=2.31.0
+fastapi>=0.100.0
+uvicorn[standard]>=0.20.0 
+
+
+
+{
+  "appName": "flashcard_agent",
+  "userId": "demo_user",
+  "sessionId": "session_1",
+  "newMessage": {
+    "role": "user",
+    "parts": [{ "text": "Your prompt here" }]
+  }
+}
