@@ -3,7 +3,7 @@ An AI-powered study assistant that helps you **summarize notes, generate quizzes
 
 ---
 
-## 🚀 Features
+##  Features
 
 | Agent             | Functionality                                           |
 |------------------|---------------------------------------------------------|
@@ -16,8 +16,8 @@ An AI-powered study assistant that helps you **summarize notes, generate quizzes
 
 ---
 
-## 💻 Getting Started
-🔐 API Key & Environment Setup
+##  Getting Started
+API Key & Environment Setup
 This project uses the Google Generative AI API to power its AI agents. For security reasons, API keys are not included in this repository.
 
 To run the project locally, follow these steps:
